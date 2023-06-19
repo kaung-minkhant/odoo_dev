@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <menuitem
+        id="lte_root_menu"
+        name="Lat Twae Education"
+        web_icon="lte,static/description/icon.png"
+        sequence="10">
+
+        <menuitem
+            id="lte_student_student_operations_menu"
+            name="Student Operations"
+            sequence="10">
+
+            <menuitem
+                id="lte_student_student_operations_students_menu"
+                name="Students"
+                action="lte.student_students_action"
+                sequence="10"/>
+
+        </menuitem>
+
+        <menuitem
+            id="lte_class_class_operations_menu"
+            name="Class Operations"
+            sequence="10">
+
+            <menuitem
+                id="lte_class_class_operations_classes_menu"
+                name="Classes"
+                action="lte.class_classes_action"
+                sequence="10"/>
+
+        </menuitem>
+        <menuitem
+            id="lte_employee_employee_operations_menu"
+            name="Employee Operations"
+            sequence="10">
+
+            <menuitem
+                id="lte_employee_employee_operations_employees_menu"
+                name="Employees"
+                action="lte.employee_employees_action"
+                sequence="10"/>
+
+        </menuitem>
+            
+    </menuitem>
+
+
+
+
+
+
+</odoo>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="lte.class_classes_action" model="ir.actions.act_window">
+        <field name="name">Classes</field>
+        <field name="view_mode">tree,form</field>
+        <field name="res_model">lte.class</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                    Add a new class
+            </p>
+        </field>
+        <field name="search_view_id" ref="lte.class_classes_view_search" />
+        <field name="view_ids" eval="[(5, 0, 0),
+            (0, 0, {'view_mode': 'tree', 'view_id': ref('lte.class_classes_view_tree')}),
+            (0, 0, {'view_mode': 'form', 'view_id': ref('lte.class_classes_view_form')})]"/>
+    </record>
+
+    <record id="lte.class_classes_view_tree" model="ir.ui.view">
+        <field name="name">lte.class_classes.view.tree</field>
+        <field name="model">lte.class</field>
+        <field name="arch" type="xml">
+            <tree default_order="id desc">
+                <field name="class_id" />
+                <field name="name" />
+            </tree>
+        </field>
+        
+    </record>
+
+    <record id="lte.class_classes_view_form" model="ir.ui.view">
+        <field name="name">lte.class_classes.view.form</field>
+        <field name="model">lte.class</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class='oe_title'>
+                        <h1>
+                            <field name="class_id" />
+                        </h1>
+                    </div>
+                    <group>
+                        <field name="name" />
+                        <field name="class_code" />
+                        <field name="description" />
+                        <field name="active" invisible="1"/>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="lte.class_classes_view_search" model="ir.ui.view">
+        <field name="name">lte.class_classes.view.search</field>
+        <field name="model">lte.class</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name" />
+            </search>
+        </field>
+    </record>
+
+    
+
+</odoo>

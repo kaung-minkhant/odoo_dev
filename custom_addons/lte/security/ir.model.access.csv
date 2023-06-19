@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+lte.access_lte_student,access_lte_student,lte.model_lte_student,base.group_user,1,1,1,1
+lte.access_lte_class,access_lte_class,lte.model_lte_class,base.group_user,1,1,1,1
+lte.access_lte_employee,access_lte_employee,lte.model_lte_employee,base.group_user,1,1,1,1

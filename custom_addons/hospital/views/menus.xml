@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem 
+        name="Hospital"
+        id="menu_hospital_root"
+        sequence='10'
+    >
+        <menuitem 
+            name="Patient Operations"
+            id="menu_hospital_patient_operations"
+            sequence='10'
+        >
+            <menuitem 
+                name="Patients"
+                id="menu_hospital_patient_operations_patients"
+                action="hospital.patient_patients_action"
+                sequence='10'
+            />
+            <menuitem 
+                name="Female Patients"
+                id="menu_hospital_patient_operations_female_patients"
+                action="hospital.patient_female_patients_action"
+                sequence='11'
+            />
+        </menuitem>
+        
+        <menuitem 
+            name="Doctor Operations"
+            id="menu_hospital_doctor_operations"
+            sequence='11'
+        >
+            <menuitem 
+                name="Doctors"
+                id="menu_hospital_doctor_operations_doctors"
+                action="hospital.doctor_doctors_action"
+                sequence='10'
+            />
+        </menuitem>
+
+        <menuitem 
+            name="Appointment Operations"
+            id="menu_hospital_appointment_operations"
+            sequence='12'
+        >
+            <menuitem 
+                name="Appointments"
+                id="menu_hospital_appointments"
+                action="hospital.appointment_operations_appointments_action"
+                sequence='10'
+            />
+        </menuitem>
+    </menuitem>
+    
+
+    
+    
+    
+    
+</odoo>

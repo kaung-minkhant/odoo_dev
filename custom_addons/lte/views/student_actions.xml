@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="lte.student_students_action" model="ir.actions.act_window">
+        <field name="name">Students</field>
+        <field name="res_model">lte.student</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                    Add a new student
+            </p>
+        </field>
+        <field name="search_view_id" ref="lte.student_students_view_search" />
+        <field name="view_ids" eval="[(5, 0, 0),
+            (0, 0, {'view_mode': 'tree', 'view_id': ref('lte.student_students_view_tree')}),
+            (0, 0, {'view_mode': 'form', 'view_id': ref('lte.student_students_view_form')})]"/>
+    </record>
+
+    <record id="lte.student_students_view_tree" model="ir.ui.view">
+        <field name="name">lte.student_students.view.tree</field>
+        <field name="model">lte.student</field>
+        <field name="arch" type="xml">
+            <tree default_order="id desc">
+                <field name="student_id" />
+                <field name="name" />
+                <field name="age" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="lte.student_students_view_form" model="ir.ui.view">
+        <field name="name">lte.student_students_view.form</field>
+        <field name="model">lte.student</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class='oe_title'>
+                        <h1>
+                            <field name="student_id" />
+                        </h1>
+                    </div>
+                    <group>
+                        <field name="name" />
+                        <field name="age" />
+                        <field name="gender" />
+                        <field name="active" invisible="1"/>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="lte.student_students_view_search" model="ir.ui.view">
+        <field name="name">lte.student_students.view.search</field>
+        <field name="model">lte.student</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name" />
+                <field name="parent" />
+                <filter name="filter_male" string="Filter Male" domain="[('gender', '=', 'male')]" />
+                <filter name="filter_female" string="Filter Female" domain="[('gender', '=', 'female')]" />
+                <separator />
+                <filter name="filter_archive" string="Filter Archived" domain="[('active', '=', False)]" />
+                <group name="lte_student_gender_gender" string="Group By Gender">
+                    <filter name="group_by_gender" string="Group By Gender" context="{'group_by': 'gender'}" />
+                </group>
+            </search>
+        </field>
+    </record>
+
+</odoo>

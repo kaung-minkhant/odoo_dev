@@ -1,0 +1,84 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    
+
+    <record id="hospital.patient_patients_view_form" model="ir.ui.view">
+        <field name="name">hospital.patient_patients_view_form</field>
+        <field name="model">hospital.patient</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div>
+                        <h1>
+                            <field name="ref" />
+                        </h1>
+                    </div>
+                    <group>
+                        <field name="name" />
+                        <field name="age" />
+                        <field name="gender" />
+                        <field name="doctor_id"/>
+                        <field name="active" invisible='1'/>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" groups="base.group_user"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="hospital.patient_patients_view_tree" model="ir.ui.view">
+        <field name="name">hospital.patient_patients_view_tree</field>
+        <field name="model">hospital.patient</field>
+        <field name="arch" type="xml">
+            <tree default_order="id desc">
+                <field name="ref"/>
+                <field name="name"/>
+                <field name="age"/>
+                <field name="doctor_id" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="hospital.patient_patients_view_search" model="ir.ui.view">
+        <field name="name">hospital.patient_patients_view_search</field>
+        <field name="model">hospital.patient</field>
+        <field name="arch" type="xml">
+            <search position="inside">
+                <field name="name" filter_domain="['|',('ref','ilike',self),('name','ilike',self)]"/>
+                <field name="age"/>
+                <field name="is_child"/>
+                <field name="gender" />
+                <filter name="filter_male" string="Filter Male" domain="[('gender','=','m')]" />
+                <filter name="filter_female" string="Filter Female" domain="[('gender','=','f')]" />
+                <separator />
+                <filter name="filter_child" string="Filter Children" domain="[('is_child','=',True)]" />
+                <group>
+                    <filter string='Gender' name="group_by_gender" context="{'group_by': 'gender'}" />
+                </group>
+                <searchpanel>
+                    <field name="gender" enable_counters="1"/>
+                </searchpanel>
+            </search>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="hospital.patient_patients_action">
+        <field name="name">Patients</field>
+        <field name="res_model">hospital.patient</field>
+        <field name="context">{'default_name':"Default Name"}</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="hospital.patient_patients_view_search" />
+         <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                    Add a new patient
+            </p>
+        </field>
+        <field name="view_ids"
+                   eval="[(5, 0, 0),
+                          (0, 0, {'view_mode': 'tree', 'view_id': ref('hospital.patient_patients_view_tree')}),
+                          (0, 0, {'view_mode': 'form', 'view_id': ref('hospital.patient_patients_view_form')})]"/>
+    </record>
+</odoo>

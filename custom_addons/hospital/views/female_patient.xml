@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <record model="ir.actions.act_window" id="hospital.patient_female_patients_action">
+        <field name="name">Female Patients</field>
+        <field name="res_model">hospital.patient</field>
+        <field name="context">{'default_gender': 'f'}</field>
+        <field name="domain">[('gender','=','f')]</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="hospital.patient_patients_view_search" />
+        <field name="view_ids"
+                   eval="[(5, 0, 0),
+                          (0, 0, {'view_mode': 'tree', 'view_id': ref('hospital.patient_patients_view_tree')}),
+                          (0, 0, {'view_mode': 'form', 'view_id': ref('hospital.patient_patients_view_form')})]"/>
+    </record>
+
+</odoo>

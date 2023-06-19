@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+        <record model='ir.sequence' id='sequence_hospital_patient'>
+            <field name='name'>Hospital Patient Sequence</field>
+            <field name='code'>hospital.patient.sequence</field>
+            <field name='prefix'>HPS</field>
+        </record>
+    </data>
+
+    <data>
+        <record model='ir.sequence' id='sequence_hospital_doctor'>
+            <field name='name'>Hospital Doctor Sequence</field>
+            <field name='code'>hospital.doctor.sequence</field>
+            <field name='prefix'>HDS</field>
+        </record>
+    </data>
+</odoo>
